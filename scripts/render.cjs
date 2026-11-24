@@ -103,11 +103,16 @@ function resolveBrowser(modules) {
 function main(args) {
   const check = args.length === 1 && args[0] === '--check';
   const [composition, output, ...options] = args;
+  const encoderOptions = options.filter((option) => option.startsWith('--hardware-acceleration='));
   const validOptions = options.every((option) =>
-    /^--(?:frames=\d+(?:-\d+)?|gl=(?:angle|egl|swangle|swiftshader|vulkan)|overwrite)$/.test(option)
+    /^--(?:frames=\d+(?:-\d+)?|gl=(?:angle|egl|swangle|swiftshader|vulkan)|hardware-acceleration=(?:disable|required)|log=verbose|overwrite)$/.test(option)
   );
-  if (!check && (!composition || composition.startsWith('-') || !output || !/\.mp4$/i.test(output) || !validOptions)) {
-    throw new Error('Usage: node render.cjs --check | node render.cjs Composition Output.mp4 [--frames=820-860] [--gl=angle] [--overwrite]');
+  if (!check && (!composition || composition.startsWith('-') || !output || !/\.mp4$/i.test(output) || !validOptions || encoderOptions.length > 1)) {
+    throw new Error([
+      'Usage: node render.cjs --check',
+      '   or: node render.cjs Composition Output.mp4 [--frames=820-860] [--gl=angle]',
+      '       [--hardware-acceleration=disable|required] [--log=verbose] [--overwrite]',
+    ].join('\n'));
   }
   if (Number(process.versions.node.split('.')[0]) < 20) {
     throw new Error('Use the existing Node.js 20 or newer installation.');
@@ -129,14 +134,16 @@ function main(args) {
     throw new Error(`Output already exists: ${outputPath}. Choose a new name or pass --overwrite.`);
   }
 
+  const encoderOption = encoderOptions[0] ?? '--hardware-acceleration=disable';
+  const qualityOption = encoderOption.endsWith('=required') ? '--video-bitrate=12M' : '--crf=17';
   const renderArgs = [
     cli, 'render', entry, composition, outputPath,
     `--browser-executable=${browser}`,
     `--chrome-mode=${headlessShell.test(path.basename(browser)) ? 'headless-shell' : 'chrome-for-testing'}`,
-    '--codec=h264', '--crf=17', '--pixel-format=yuv420p',
+    '--codec=h264', qualityOption, '--pixel-format=yuv420p',
     '--concurrency=1', '--timeout=120000',
-    '--disable-shared-memory-capture', '--hardware-acceleration=disable',
-    ...options,
+    '--disable-shared-memory-capture', encoderOption,
+    ...options.filter((option) => option !== encoderOption),
   ];
   const result = spawnSync(process.execPath, renderArgs, { cwd: project, stdio: 'inherit' });
   if (result.error) throw result.error;

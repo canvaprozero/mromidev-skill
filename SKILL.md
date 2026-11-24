@@ -46,6 +46,9 @@ reference. Start with its `toon.ts` character proportions and front/side
 silhouettes. Lock the cast and verify poses before building all shots. Follow
 [the animation and QC guide](workflow/animation-qc.md) for rig hierarchy, contacts,
 screen inserts, frame determinism, composition, and render performance.
+Prove the depth of the main set with a short camera and motion test before
+building the remaining shots. Use the test to establish how the camera, cast,
+and props move through the same space.
 
 Register an exact-duration composition at 1080×1920, 30 fps. Set captions from
 aligned words, one at a time, Poppins Bold 700, amber `#FFD84D` with a dark outline.
@@ -64,12 +67,17 @@ expensive range at target resolution with the intended offline setup before
 handing off. Use the gates in [animation and QC](workflow/animation-qc.md).
 When reviewing a revision, include neighboring cuts and cues. Use the episode
 sheet to record actual ranges, evidence, fixes, and any unverified item.
+Check moving props over their full travel against nearby geometry in its local
+coordinates. When the edit permits a range render, verify the patched MP4 at
+both joins.
 
 Package scene and registration files, local assets (including the mix, font,
 and captions), dependency versions, the [offline launcher](scripts/render.cjs),
 and render instructions. The render runs on the user's PC with its existing Node,
-Remotion dependencies, and browser. After the full render, verify the actual MP4
-and watch it with sound before marking the release ready.
+Remotion dependencies, and browser. For the Windows RTX 2060 Super workflow,
+verify the WebGL adapter and NVENC encoder separately in a short render before
+launching the full GPU export. After the full render, verify the actual MP4 and
+watch it with sound before marking the release ready.
 
 Reference snapshots in `reference/` show visual and code patterns. Episode
 packages include their own runnable entry point, fonts, audio, and assets.
