@@ -129,19 +129,27 @@ one sentence per line.) Reference narrations in `examples/`: `museum-mount-maker
   alone as a good composition. No element may cover the main
   character's face. One consistent colour palette (one warm base
   + one accent).
+- 3D depth (NON-NEGOTIABLE — this is what makes it mromidev, not a
+  flat illustration): every shot must show a real 3D room — a
+  visible floor plane + back wall + at least one element at a
+  clearly different depth (side wall, furniture, shelf, prop).
+  Never a single flat wall filling the frame. Camera slightly
+  angled, never dead front-on against one wall; the floor must
+  read as a floor (perspective), not a thin strip. If a still
+  looks like a flat 2D drawing, the shot fails — rebuild the room.
 - Camera: pan / pull-back and slow push-ins (gentle drift, zoom
   ±2–3% per scene). No hand-held float, no impact kicks except
   for a genuine impact beat.
-- Captions: ONE title caption (video title, Poppins 700, y=1640)
-  + word-by-word karaoke (REQUIRED). Karaoke: one word at a time,
-  centre, Poppins Bold 700 amber `#FFD84D` + dark outline, 230 ms
-  pop, raw Whisper window (no +0.3), fontSize 64, bottom 288,
-  above the title with a gap (karaoke ~y1568–1632, title at y1640
-  — never overlap, never cover the main character's face).
-  Implement inline OR via the frozen `design/Karaoke` component
-  reading `getInputProps().karaoke`
-  (`{words: [{word, start, end}], size}`) — either is fine. No
-  subtitles or per-line captions.
+- Captions: word-by-word karaoke (REQUIRED) — NO title caption.
+  Never render the video title or "How it feels to be a …" as
+  on-screen text (no title pill, no title card). The video title
+  is metadata only (file / composition name). Karaoke: one word at
+  a time, centre, Poppins Bold 700 amber `#FFD84D` + dark outline,
+  230 ms pop, raw Whisper window (no +0.3), fontSize 64, bottom
+  288 — never cover the main character's face. Implement inline OR
+  via the frozen `design/Karaoke` component reading
+  `getInputProps().karaoke` (`{words: [{word, start, end}], size}`)
+  — either is fine. No subtitles or per-line captions.
 - Fonts: `src/fonts.css` (Poppins, Bebas Neue, Oswald, Patrick
   Hand) — include it and import it. Never write `@font-face`,
   never rely on system fonts.
@@ -155,8 +163,9 @@ one sentence per line.) Reference narrations in `examples/`: `museum-mount-maker
   are not yours to fix, but say so).
 - Stills QC: one frame per shot (dpr 0.5) + one frame at dpr 1.0.
   Check: composition, no overlap, karaoke shows the right word at
-  the right time, silence/gaps have no stray word, title never
-  collides with karaoke.
+  the right time, silence/gaps have no stray word, karaoke never
+  covers the main character's face, and no title text anywhere on
+  screen.
 - Whisper cross-check of SRT/karaoke against the actual audio
   (see "SRT").
 - ffprobe: duration, fps, resolution; mp4 must be faststart

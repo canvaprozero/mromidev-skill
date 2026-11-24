@@ -67,7 +67,7 @@ HARD RULES — do not break any of these:
    - src/compositions/<SLUG>/<slug>Story.ts (timeline, shots, cameras, DOF)
    - src/compositions/<SLUG>/<slug>Cast.ts (billboard character, outfit, staging)
    - src/compositions/<SLUG>/<slug>World.ts (procedural 3D world)
-   - src/compositions/<SLUG>/<Slug>.tsx (component + post chain + title caption)
+   - src/compositions/<SLUG>/<Slug>.tsx (component + post chain — NO title caption)
    Follow the fry cook files' structure and naming — same exports (FPS,
    TOTAL, SHOTS, shotAt, layersAt, camAt, dofAt, focusAt, per-prop
    timelines), adapted to the new world.
@@ -95,24 +95,30 @@ HARD RULES — do not break any of these:
    Math.random (use the mulberry32 seeded PRNG already in fryWorld.ts), NO
    Date.now, NO requestAnimationFrame, NO setInterval, NO CSS keyframes/SMIL.
    The same frame must always render the same pixels.
-7. Captions: ONE title caption — the video title (e.g. "how it feels
-   to be a night-shift nurse"), Poppins 700, y=1640, same placement/style
-   as FryCook.tsx — PLUS word-by-word karaoke. Karaoke is REQUIRED: one
-   word at a time, centre, highlighting the word being spoken. You may
+7. Captions: word-by-word karaoke ONLY — NO title caption. Never
+   render the video title or "How it feels to be a …" as on-screen
+   text (no title pill, no title card); the video title is metadata
+   only (file / composition name). Karaoke is REQUIRED: one word at
+   a time, centre, highlighting the word being spoken. You may
    implement it inline in the component (timings derived from the SRT
    line timings) OR via the frozen design/Karaoke component
    (`../../design/Karaoke`) reading `getInputProps().karaoke` (object
    `{words: [{word, start, end}], size}`) — either is fine. Use fontSize
-   64, bottom 288, placed above the title caption with a gap (karaoke
-   ~y1568-1632, title at y1640 — they must never overlap, and neither
-   may cover the main character's face). Do NOT add subtitles or per-line
+   64, bottom 288, and never let it cover the main character's face.
+   Do NOT add subtitles or per-line
    captions. Note: the assistant verifies the per-word timings against
    the actual audio with Whisper when the code comes back and corrects
    them if they drift — derive them as accurately as you can from the
    SRT.
 8. First AND last frame of every shot must each stand alone as a good
    composition (no deliberately wide/empty starts to make zoom room). No
-   element may cover the main character's face. Keep one consistent colour
+   element may cover the main character's face. 3D depth is
+   NON-NEGOTIABLE: every shot must show a real 3D room — visible floor
+   plane + back wall + at least one element at a clearly different depth
+   (side wall, furniture, shelf, prop). Never a single flat wall filling
+   the frame; camera slightly angled, never dead front-on against one
+   wall. If a still looks like a flat 2D drawing, the shot fails —
+   rebuild the room. Keep one consistent colour
    palette for the scene (one warm base + one accent colour, like the fry
    cook's warm cream + teal).
 9. Register the new composition in src/Root.tsx: a NEW <Composition> block,
@@ -151,8 +157,8 @@ PACKAGE FORMAT — what you return:
   internet is slow — a first render that downloads hundreds of MB is
   the biggest practical problem.
 - Fonts: use src/fonts.css, supplied by the assistant — include it in
-  the zip (if you build one) and import it, so karaoke and titles
-  render in Poppins Bold, not Arial. Do not rely on system fonts.
+  the zip (if you build one) and import it, so karaoke renders
+  in Poppins Bold, not Arial. Do not rely on system fonts.
 - The output mp4 must be faststart (moov atom first), so it plays
   when attached in chat.
 
@@ -233,7 +239,7 @@ external resources / audio in the code. Grain seed = frame number.
 QA rules: every frame checked for black / white / frozen / pop frames; a
 frame must never be blank. First AND last frame of every scene must each
 stand alone as a good composition. No captions unless asked (this video:
-title caption only). Never upload / publish / send the template's
+karaoke only, NO title caption). Never upload / publish / send the template's
 references/frames/ or references/sheets/ (study-only — not included in
 this ZIP). Keep the MIT attribution comments crediting
 mromidev/claude-animated-shorts.
