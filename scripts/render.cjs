@@ -135,6 +135,9 @@ function main(args) {
   }
 
   const encoderOption = encoderOptions[0] ?? '--hardware-acceleration=disable';
+  if (windows && !options.some((option) => option.startsWith('--gl='))) {
+    options.push('--gl=angle');
+  }
   const qualityOption = encoderOption.endsWith('=required') ? '--video-bitrate=12M' : '--crf=17';
   const renderArgs = [
     cli, 'render', entry, composition, outputPath,

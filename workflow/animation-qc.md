@@ -97,14 +97,17 @@ either version or renderer requires a fresh target-resolution spike.
 
 ### Windows GPU preflight
 
-For the RTX 2060 Super setup, run a representative range with desktop ANGLE
-and required hardware encoding. Use the same options for the full GPU export
-after both checks pass.
+Use the current launcher in new Windows Three.js packages. It defaults to
+ANGLE when no `--gl` option is supplied. A Windows batch wrapper can forward
+its arguments directly to the launcher. The default H.264 encoder is
+software. Confirm WebGL on the RTX 2060 Super with a short render, then test
+NVENC separately when hardware encoding is needed. An explicit `--gl`
+option overrides the Windows default.
 
 ```sh
 node render.cjs --check
-node render.cjs EpisodeMromidev qc-gpu.mp4 --frames=750-840 --gl=angle --hardware-acceleration=required --log=verbose
-node render.cjs EpisodeMromidev Episode.mp4 --gl=angle --hardware-acceleration=required --log=verbose
+node render.cjs EpisodeMromidev qc-webgl.mp4 --frames=750-840 --log=verbose
+node render.cjs EpisodeMromidev qc-nvenc.mp4 --frames=750-840 --hardware-acceleration=required --log=verbose
 ```
 
 Choose the inclusive range from the episode sheet. The `--check` command
@@ -128,8 +131,8 @@ render process.
   uses a 12 Mbps bitrate in required hardware mode. Its default encoding mode
   is software H.264 at CRF 17.
 
-If either GPU check fails, record which stage failed and report it before a
-full GPU export. Use `--gl=swangle` for a software WebGL diagnostic range on a
+If a GPU check fails, record which stage failed. Match the full export's
+settings to the preflight that passed. Use `--gl=swangle` for a software WebGL diagnostic range on a
 GPU-less host. Identify the measured configuration in the results.
 
 ### Offline paths and export verification
