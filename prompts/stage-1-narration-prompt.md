@@ -2,6 +2,7 @@
 
 > Develop an English-language 9:16 Short for an international audience. Read
 > [SKILL.md](../SKILL.md) and the [narration guide](../workflow/narration.md).
+> For MeowExplain, apply the [channel profile](../profiles/meowexplain/README.md).
 > Work from the supplied premise, genre, target duration and any locked facts or
 > visuals. Use the profession voice for that series and choose the viewpoint to
 > suit other premises.
@@ -10,8 +11,8 @@
 >
 > 1. **Pertanyaan awal** — the first image, opening line and question it raises.
 > 2. **Yang bikin penonton bertahan** — the character's immediate goal and an
->    ordered list of beats. Pair each with the audience's new information and
->    what can be seen on screen.
+>    ordered list of beats. Pair each with what the viewer currently assumes,
+>    the new evidence they can see, and what changes. Merge repeated evidence.
 > 3. **Payoff** — the visible answer, consequence and any clue that prepared it.
 > 4. **Spoken script** — natural English, one short line per breath or action.
 > 5. **Performance direction** — beat-level emotion, pace, emphasis, or pauses in

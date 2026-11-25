@@ -13,6 +13,13 @@ line weight, wardrobe, colors, and the key props for each recurring actor. Use
 one cast definition per character. Change viewpoint, pose, expression, and
 lighting through the rig.
 
+For MeowExplain, compare all views with the
+[channel model sheet](../profiles/meowexplain/README.md#character-lock) before
+building the rest of the edit. Use the shared rig's 2D head and torso cards and
+ink limbs, with joints and hand targets in world space. Include a close-up of
+the jaw and shoulder, then a motion excerpt that shows sitting, stepping, and
+handling a prop. Fix silhouette or contact failures at this gate.
+
 - Attach hands and sleeves through the shoulder–elbow–wrist chain, and shoes
   through hip–knee–ankle. Use local joint transforms and keep the same attachment
   points across views. Drive gait from the root and keep planted feet fixed in

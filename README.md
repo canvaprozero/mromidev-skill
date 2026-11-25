@@ -11,6 +11,7 @@ premise, including horror, explainers, and the profession series.
 | --- | --- |
 | Give the complete workflow to an agent | [SKILL.md](SKILL.md) |
 | Approve the hook, sustained beats, and payoff | [Narration guide](workflow/narration.md) and [stage 1](prompts/stage-1-narration-prompt.md) |
+| Make a MeowExplain episode | [Channel profile](profiles/meowexplain/README.md) |
 | Track one episode through production | [Episode sheet](workflow/episode-sheet.md) |
 | Board, animate, and review shots | [Stage 2](prompts/stage-2-scene-prompt.md) and [animation and QC](workflow/animation-qc.md) |
 | Generate and mix sound effects | [Earshot guide](sfx/README.md) |

@@ -10,6 +10,10 @@ cast grounded in a real 3D set, using Remotion and three.js. Choose the story
 format to fit the premise. The profession examples remain useful for that series.
 Use English for spoken narration and captions, and keep the video title in metadata.
 
+For MeowExplain episodes, read the [channel profile](profiles/meowexplain/README.md)
+before drafting or building a cast. Use its story review and approved 2D rig for
+the timed preview.
+
 ## 1. Lock the story
 
 Use [the narration guide](workflow/narration.md) and [stage 1](prompts/stage-1-narration-prompt.md).

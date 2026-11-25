@@ -10,7 +10,9 @@
 > and sound cue. Review the cast lock in full body and close-up, then preview
 > a representative motion and a timed edit before finishing all the shots.
 >
-> Base the character silhouette on the bridge `toon.ts` reference. Animate
+> For MeowExplain, use the [channel profile and cast
+> reference](../profiles/meowexplain/README.md#character-lock). For other
+> episodes, use the bridge `toon.ts` reference as the silhouette baseline. Animate
 > attached limbs and props from the cast rig. Use the same pose source for
 > monitor views and close-ups. Use real 3D room depth and consistent occlusion.
 > Produce a short depth test that shows how the camera travels past a foreground

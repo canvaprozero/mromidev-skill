@@ -11,6 +11,20 @@ breaths, pivotal lines, and time to see the ending.
 | Yang bikin penonton bertahan | Introduce the character's immediate goal. Demonstrate the rule with an example, then use it to uncover stronger evidence, create a risk, or force a decision. | Does each beat change what the viewer expects? Can the animator show the evidence? |
 | Payoff | Answer the opening question with a visible result, then show what it costs or changes. Plant the evidence early if the result reinterprets it. | Can a listener name what happened, why it happened, and how the opening prepared it? |
 
+## Review the beat sheet before writing VO
+
+- Record what the viewer can reasonably assume after the opening shot. At each
+  beat, name the new evidence, the action that shows it, and what changes for the
+  viewer. Merge beats that repeat the same fact.
+- Give the middle a new constraint, choice, or consequence. For a mechanism
+  story, change a condition and show its effect. For a character story, reveal
+  a detail that changes how the viewer understands an earlier action.
+- Describe the last shot in one sentence. Check that it visibly answers the
+  opening question and shows the outcome. Leave screen time to read the result.
+
+For MeowExplain, use the [Skyscraper example](../profiles/meowexplain/README.md#worked-example)
+when a draft reads like a summary of events.
+
 ## Patterns from the two reference Shorts
 
 | Reference | How it sustains attention | What to apply |

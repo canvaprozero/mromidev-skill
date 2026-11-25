@@ -7,10 +7,13 @@ recording. Record the actual QC evidence beside the shots as they pass review.
 - **Pertanyaan awal:**
 - **Yang bikin penonton bertahan:**
 - **Payoff and visible consequence:**
+- Opening assumption and the beat that changes it:
 - Payoff clue and where it first appears:
+- Final shot that proves the payoff:
 - Approved English narration / take / aligned captions:
 - Narration direction and intended runtime:
 - Cast model sheet, rig revision, and recurring props:
+- For MeowExplain, comparison with the [approved silhouette and motion checks](../profiles/meowexplain/README.md#character-lock):
 - Mix, stems, and Earshot cue list:
 - Target machine, browser, and render options:
 - Observed WebGL adapter and encoder:
